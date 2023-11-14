@@ -8,14 +8,23 @@ from django.contrib.auth.models import User
 class TeamSoftSerializer(serializers.ModelSerializer):
     class Meta:
         model = TeamSoft
-        fields = ['ID', 'Name', 'SurName', 'Email', 'Telephone', 'CPF', 'RG', 'BirthDate']
+        fields = [
+            "ID",
+            "Name",
+            "SurName",
+            "Email",
+            "Telephone",
+            "CPF",
+            "RG",
+            "BirthDate",
+        ]
 
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['id', 'username', 'password']
-        extra_kwargs = {'password': {'write_only': True}}
+        fields = ["id", "username", "password"]
+        extra_kwargs = {"password": {"write_only": True}}
 
 
 class TeamSoftWithUserSerializer(serializers.ModelSerializer):
@@ -23,14 +32,13 @@ class TeamSoftWithUserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = TeamSoft
-        fields = '__all__'
+        fields = "__all__"
 
     def create(self, validated_data):
-        user_data = validated_data.pop('user')
+        user_data = validated_data.pop("user")
         user_obj = User.objects.create_user(**user_data)
         teamsoft = TeamSoft.objects.create(user=user_obj, **validated_data)
         return teamsoft
-
 
 
 class LoginSerializer(serializers.ModelSerializer):
@@ -39,9 +47,11 @@ class LoginSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ['username', 'password']
-        extra_kwargs = {'password': {'write_only': True}}
+        fields = ["username", "password"]
+        extra_kwargs = {"password": {"write_only": True}}
 
     def check_user(self, clean_data):
-        user = authenticate(username=clean_data['username'], password=clean_data['password'])
+        user = authenticate(
+            username=clean_data["username"], password=clean_data["password"]
+        )
         return user
