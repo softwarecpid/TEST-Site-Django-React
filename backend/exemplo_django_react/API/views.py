@@ -14,6 +14,8 @@ from django.contrib.auth.models import User
 @api_view(['GET', 'POST'])
 def register_view(request):
     serializer = TeamSoftWithUserSerializer(data=request.data)
+    serializer.is_valid()
+    print(serializer.errors)
     if serializer.is_valid():
         serializer.save()
         return Response(serializer.data, status=status.HTTP_201_CREATED)
