@@ -1,0 +1,38 @@
+Usuario
+Senha
+Email
+Nome
+Sobrenome
+CPF
+RG
+Data de Nascimento
+
+RegisterView - Post
+LoginView - Post
+LogoutView - Post
+UserView - Get
+UpdateView - Post
+
+
+Login Format
+{
+  "username": "john_doe",
+  "password": "secure_password"
+}
+
+Register Format
+
+{
+  "user": {
+    "username": "john_doe",
+    "password": "secure_password"
+  },
+  "Name": "John",
+  "SurName": "Doe",
+  "Position": "Developer",
+  "Email": "john.doe@example.com",
+  "Telephone": "1234567890",
+  "CPF": "123.456.789-01",
+  "RG": "123456789",
+  "BirthDate": "01/01/1990"
+}
