@@ -8,3 +8,9 @@ O front-end do projeto está sendo construindo com essas tecnologias:
 - React Query para fetching dos dados.
 - React Router para criação de rotas.
 - TailwindCSS para estilização.
+
+O Back-end será feito com:
+
+- PostgreSQL
+- Django REST Framework
+- FastAPI
