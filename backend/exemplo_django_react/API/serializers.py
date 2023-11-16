@@ -28,7 +28,7 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 class TeamSoftWithUserSerializer(serializers.ModelSerializer):
-    user_obj = UserSerializer()
+    user = UserSerializer()
 
     class Meta:
         model = TeamSoft
@@ -36,8 +36,8 @@ class TeamSoftWithUserSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         user_data = validated_data.pop("user")
-        user_obj = User.objects.create_user(**user_data)
-        teamsoft = TeamSoft.objects.create(user=user_obj, **validated_data)
+        user = User.objects.create_user(**user_data)
+        teamsoft = TeamSoft.objects.create(user=user, **validated_data)
         return teamsoft
 
 
