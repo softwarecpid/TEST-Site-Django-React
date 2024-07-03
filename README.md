@@ -11,6 +11,6 @@ O front-end do projeto está sendo construindo com essas tecnologias:
 
 O Back-end será feito com:
 
-- PostgreSQL
-- Django REST Framework
-- FastAPI
+- PostgreSQL.
+- Django REST Framework.
+- FastAPI.
